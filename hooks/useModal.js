@@ -33,8 +33,8 @@ const attemptFocus = (element) => {
 };
 
 const isFocusable = (element) => {
-  if (element.tabIndex >= 0){
-    return true
+  if (element.tabIndex >= 0) {
+    return true;
   }
   if (element.tabIndex < 0) {
     return false;
@@ -54,7 +54,7 @@ const isFocusable = (element) => {
     default:
       return false;
   }
-}
+};
 
 function useModal({
   labelledby: userLabelledby = "",
@@ -89,21 +89,30 @@ function useModal({
 
   // keep focus within modal until closed
   useEffect(() => {
-    if (modalRef.current) {
-      let pre = document.createElement("div");
-      let post = document.createElement("div");
-      pre.tabIndex = 0;
-      post.tabIndex = 0;
+    const { current: modalNode } = modalRef;
+
+    const pre = document.createElement("div");
+    const post = document.createElement("div");
+    pre.tabIndex = 0;
+    post.tabIndex = 0;
+
+    if (modalNode) {
       pre.addEventListener("focus", () => {
-        focusLastDescendant(modalRef.current);
+        focusLastDescendant(modalNode);
       });
       post.addEventListener("focus", () => {
-        focusFirstDescendant(modalRef.current);
+        focusFirstDescendant(modalNode);
       });
-
-      modalRef.current.parentNode.insertBefore(pre, modalRef.current);
-      modalRef.current.parentNode.appendChild(post);
+      modalNode.parentNode.insertBefore(pre, modalNode);
+      modalNode.parentNode.appendChild(post);
     }
+
+    return () => {
+      if (modalNode) {
+        modalNode.parentNode.removeChild(pre);
+        modalNode.parentNode.removeChild(post);
+      }
+    };
   });
 
   const toggleModal = () => {
@@ -116,10 +125,10 @@ function useModal({
     setIsLocked(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsOpen(false);
     setIsLocked(false);
-  };
+  }, [setIsLocked]);
 
   const getModalProps = useCallback(() => {
     const modalClickHandle = (event) => {
@@ -140,7 +149,14 @@ function useModal({
       onClick: modalClickHandle,
       onKeyDown: modalEscapeKeyDownHandle,
     };
-  }, [describedby, labelledby, userDescribedby, userLabelledby, role]);
+  }, [
+    role,
+    userLabelledby,
+    labelledby,
+    userDescribedby,
+    describedby,
+    closeModal,
+  ]);
 
   return {
     isOpen,

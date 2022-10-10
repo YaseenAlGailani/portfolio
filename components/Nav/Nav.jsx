@@ -2,6 +2,7 @@ import {
   useState,
   useLayoutEffect,
   useEffect,
+  useRef,
   Children,
   cloneElement,
 } from "react";
@@ -11,13 +12,11 @@ import Triangle from "../icons/TriangleIcon";
 import useModal from "../../hooks/useModal";
 
 function Nav({ children }) {
-
   if (Children.count(children) !== 1 && children.type !== NavList) {
-    throw new Error('Nav must have a single child of type NavList')
+    throw new Error("Nav must have a single child of type NavList");
   }
-  
-  const [isSmallScreen, setIsSmallScreen] = useState();
 
+  const [isSmallScreen, setIsSmallScreen] = useState();
   const {
     isOpen,
     toggleModal: toggleNav,
@@ -62,7 +61,7 @@ function Nav({ children }) {
               transition={{ type: "spring", damping: 30, stiffness: 800 }}
               className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 z-20 shadow-xl"
             >
-              {cloneElement(children, { isSmallScreen })}
+              {cloneElement(children, { isSmallScreen, closeNav })}
             </motion.div>
           )}
         </AnimatePresence>
@@ -83,23 +82,26 @@ function ToggleButton({ onClick, isOpen }) {
   );
 }
 
-function NavList({ isSmallScreen, children }) {
+function NavList({ isSmallScreen, children, closeNav=()=>{} }) {
+
   return (
     <ul
       className={isSmallScreen ? styles.vertical_list : styles.horizontal_list}
     >
-      {Children.map(children, (child) => {
-        if (child.type === "a") {
+      {Children.map(children, (navItem) => {
+        if (navItem.type === "a") {
           return (
             <li
               className={
                 isSmallScreen ? styles.vertical_item : styles.horizontal_item
               }
             >
-              {cloneElement(child, {
+              {cloneElement(navItem, {
                 className: isSmallScreen
                   ? styles.vertical_link
                   : styles.horizontal_link,
+                  href:'#',
+                  onClick:(e)=>{navItem.props.onClick(e);closeNav()}
               })}
             </li>
           );

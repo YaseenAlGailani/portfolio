@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useId } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import GLogo from "../components/icons/GLogo";
@@ -10,14 +10,21 @@ import Projects from "../components/Projects/Projects";
 import { Nav, NavList, Item } from "../components/Nav/Nav";
 
 export default function Home() {
+  
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
 
-  const scrollTo = (id) => {
-    const position =
-      document.getElementById(id).getBoundingClientRect.top + window.scrollY;
+const key = Math.random() * 10
+
+  const scrollTo = (node) => {
+    const position = node.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: position, behavior: "smooth" });
+  };
+
+  const handleNavItemClick = (e, section) => {
+    e.preventDefault();
+    scrollTo(section);
   };
 
   return (
@@ -33,9 +40,30 @@ export default function Home() {
             <GLogo />
             <Nav>
               <NavList>
-                <a href="">Tech I build with</a>
-                <a href="">Things I built</a>
-                <a href="">Get in touch</a>
+                <a
+                  to={section1Ref.current}
+                  onClick={(e) => {
+                    handleNavItemClick(e, section1Ref.current);
+                  }}
+                >
+                  Tech I build with
+                </a>
+                <a
+                  to={section2Ref.current}
+                  onClick={(e) => {
+                    handleNavItemClick(e, section2Ref.current);
+                  }}
+                >
+                  Things I built
+                </a>
+                <a
+                  to={section3Ref.current}
+                  onClick={(e) => {
+                    handleNavItemClick(e, section3Ref.current);
+                  }}
+                >
+                  Get in touch
+                </a>
               </NavList>
             </Nav>
           </div>
@@ -64,11 +92,11 @@ export default function Home() {
             </p>
           </div>
         </header>
-        <Hr className="mb-8 sm:mb-12 md:mb-20" />
+        <Hr className="sm:mb-12 md:mb-20" />
         <main>
           <section
             ref={section1Ref}
-            className="container mx-auto mb-8 sm:mb-12 md:mb-20"
+            className="pt-8 container mx-auto mb-8 sm:mb-12 md:mb-20"
           >
             <Cascade before="##">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900 font-display mb-8">
@@ -79,8 +107,8 @@ export default function Home() {
               <TechOrbit />
             </div>
           </section>
-          <Hr className="mb-8 sm:mb-12 md:mb-20" />
-          <section ref={section2Ref} className="container mx-auto">
+          <Hr className="sm:mb-12 md:mb-20" />
+          <section ref={section2Ref} className="pt-8 container mx-auto">
             <Cascade before="##">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900  font-display mb-8">
                 Things I built
@@ -90,8 +118,8 @@ export default function Home() {
               <Projects />
             </div>
           </section>
-          <Hr className="mb-8 sm:mb-12 md:mb-20" />
-          <section ref={section3Ref} className="container mx-auto mb-8">
+          <Hr className="sm:mb-12 md:mb-20" />
+          <section ref={section3Ref} className="pt-8 container mx-auto mb-8">
             <Cascade before="##">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900  font-display mb-8">
                 Get in touch
