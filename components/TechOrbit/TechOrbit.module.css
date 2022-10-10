@@ -1,0 +1,10 @@
+@tailwind components;
+
+@layer components {
+
+  .tech {
+    @apply flex justify-center items-center absolute -left-[20px] -top-[20px] sm:-top-[30px] sm:-left-[30px] p-2
+    w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] border-2 border-neutral-200 dark:border-slate-700 rounded-full bg-neutral-50 dark:bg-slate-800 
+    hover:ring-2 ring-palette-red ring-offset-8 ring-offset-neutral-50 dark:ring-offset-slate-800 hover:border-0 transition-shadow
+  }
+}
