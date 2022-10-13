@@ -188,7 +188,7 @@ export default function Home() {
               </h2>
             </Cascade>
             <div className="relative mb-40 sm:mb-52">
-              <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 p-2 sm:p-4">
+              <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 p-1 sm:p-4">
                 <p className="rotate-2 sm:text-[1.2rem]">
                   I can&apos;t be bothered to build a form, please get in touch
                   with me on linkedin ✌️
