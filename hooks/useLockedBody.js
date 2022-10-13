@@ -1,10 +1,10 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function useLockedBody(initialLocked = false) {
   const [isLocked, setIsLocked] = useState(initialLocked);
 
   // Do the side effect before render
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isLocked) {
       return;
     }

@@ -1,6 +1,5 @@
 import {
   useState,
-  useLayoutEffect,
   useEffect,
   useRef,
   Children,
@@ -24,11 +23,10 @@ function Nav({ children }) {
     getModalProps,
   } = useModal({ role: "dialog" });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const screenWidthQuery = window.matchMedia("(max-width:	768px)");
 
     screenWidthQuery.addEventListener("change", (e) => {
-      console.log(e.matches);
       setIsSmallScreen(e.matches);
     });
 

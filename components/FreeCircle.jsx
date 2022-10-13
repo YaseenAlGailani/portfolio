@@ -1,6 +1,6 @@
 export default function FreeCircle({ children }) {
   return (
-    <div className="relative">
+    <div aria-hidden={true} className="relative">
       <span className="absolute top-0 left-0 translate-x-[-32%] translate-y-[-32%] z-[-1]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -13,9 +13,9 @@ export default function FreeCircle({ children }) {
             transform="translate(9.119 20.646) rotate(-16)"
             fill="none"
             stroke="#f4d152"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="3"
           />
           <path
             className="dark:stroke-palette-yellow"
@@ -23,9 +23,9 @@ export default function FreeCircle({ children }) {
             transform="translate(1897.755 -2454.672) rotate(47)"
             fill="none"
             stroke="#343750"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="3"
           />
         </svg>
       </span>

@@ -60,9 +60,9 @@ function useModal({
   labelledby: userLabelledby = "",
   describedby: userDescribedby = "",
   role = "alertdialog",
+  relatedNodes = [],
 } = {}) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLocked, setIsLocked] = useLockedBody(false);
+  const [isOpen, setIsOpen] = useLockedBody(false);
 
   const modalRef = useRef(null);
   const labelledby = useId();
@@ -75,8 +75,10 @@ function useModal({
     }
   });
 
-  useEffect(() => {
+  // assigns the event listener with every component using of the hook (not good)
+  /*  useEffect(() => {
     const handleClickOutside = (event) => {
+      console.log(event.target)
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setIsOpen(false);
       }
@@ -85,11 +87,14 @@ function useModal({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [setIsOpen, relatedNodes]);
+  */
 
   // keep focus within modal until closed
   useEffect(() => {
     const { current: modalNode } = modalRef;
+    // keep a reference to the parentNode for the cleanup
+    const modalParent = modalNode?.parentNode;
 
     const pre = document.createElement("div");
     const post = document.createElement("div");
@@ -103,32 +108,29 @@ function useModal({
       post.addEventListener("focus", () => {
         focusFirstDescendant(modalNode);
       });
-      modalNode.parentNode.insertBefore(pre, modalNode);
-      modalNode.parentNode.appendChild(post);
+      modalParent.insertBefore(pre, modalNode);
+      modalParent.appendChild(post);
     }
 
     return () => {
-      if (modalNode) {
-        modalNode.parentNode.removeChild(pre);
-        modalNode.parentNode.removeChild(post);
+      if (modalParent) {
+        modalParent.removeChild(pre);
+        modalParent.removeChild(post);
       }
     };
   });
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
-    setIsLocked(!isLocked);
   };
 
   const openModal = () => {
     setIsOpen(true);
-    setIsLocked(true);
   };
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
-    setIsLocked(false);
-  }, [setIsLocked]);
+  }, [setIsOpen]);
 
   const getModalProps = useCallback(() => {
     const modalClickHandle = (event) => {

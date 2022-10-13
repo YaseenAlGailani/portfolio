@@ -3,7 +3,7 @@
 @layer components {
 
   .card_width {
-    @apply md:max-w-[40%]
+    @apply w-full md:max-w-[40%]
   }
 
   .card_width:nth-child(4n+1),
