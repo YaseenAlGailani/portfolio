@@ -79,6 +79,7 @@ export default function Card({ imageSrc, title, children }) {
               src={imageSrc}
               alt=""
               layout="responsive"
+              placeholder="blur"
             />
           </motion.div>
           {isOpen && (
