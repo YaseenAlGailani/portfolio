@@ -27,14 +27,14 @@ export default function Clems() {
         </p>
         <a
           className={styles.visitLink}
-          href="http://egytek-solutions.com/"
+          href="https://careers.cle.ms/"
           target="_blank"
           rel="noreferrer"
         >
           Visit website
         </a>
       </div>
-        <Hr />
+      <Hr />
       <footer className={styles.footer}>
         <p>
           Note: Changes to the website my have occured since the end of my

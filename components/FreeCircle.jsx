@@ -1,7 +1,10 @@
 export default function FreeCircle({ children }) {
   return (
-    <div aria-hidden={true} className="relative">
-      <span className="absolute top-0 left-0 translate-x-[-32%] translate-y-[-32%] z-[-1]">
+    <div className="relative">
+      <span
+        aria-hidden={true}
+        className="absolute top-0 left-0 translate-x-[-32%] translate-y-[-32%] z-[-1]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="94"
