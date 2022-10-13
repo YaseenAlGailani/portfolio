@@ -44,7 +44,7 @@ export default function Home() {
           content="Frontend web developer, React developer"
           name="keywords"
         />
-        <meta content="https://gailani.dev/public/og-image.png" name="image" />
+        <meta content="https://gailani.dev/og-image.png" name="image" />
         <meta content="https://gailani.dev" property="og:url" />
         <meta content="Yaseen AlGailani" property="og:title" />
         <meta
@@ -52,7 +52,7 @@ export default function Home() {
           property="og:description"
         />
         <meta
-          content="https://gailani.dev/public/og-image.png"
+          content="https://gailani.dev/og-image.png"
           property="og:image"
         />
         <meta content="summary_large_image" name="twitter:card" />
@@ -64,7 +64,7 @@ export default function Home() {
           name="twitter:description"
         />
         <meta
-          content="https://gailani.dev/public/og-image.png"
+          content="https://gailani.dev/og-image.png"
           name="twitter:image"
         />
         <meta content="Yaseen AlGailani" name="twitter:alt" />
