@@ -1,14 +1,7 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  Children,
-  cloneElement,
-} from "react";
-import styles from "./Nav.module.css";
+import { useState, useEffect, Children, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Triangle from "../icons/TriangleIcon";
-import useModal from "../../hooks/useModal";
+import Triangle from "./icons/TriangleIcon";
+import useModal from "../hooks/useModal";
 
 function Nav({ children }) {
   if (Children.count(children) !== 1 && children.type !== NavList) {
@@ -80,26 +73,33 @@ function ToggleButton({ onClick, isOpen }) {
   );
 }
 
-function NavList({ isSmallScreen, children, closeNav=()=>{} }) {
-
+function NavList({ isSmallScreen, children, closeNav = () => {} }) {
   return (
     <ul
-      className={isSmallScreen ? styles.vertical_list : styles.horizontal_list}
+      className={
+        isSmallScreen
+          ? "absolute left-1/2 -translate-x-1/2 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+          : "grid grid-flow-col gap-12 md:text-xl font-bold text-palette-blue-900 dark:text-palette-grey -mr-3"
+      }
     >
       {Children.map(children, (navItem) => {
         if (navItem.type === "a") {
           return (
             <li
               className={
-                isSmallScreen ? styles.vertical_item : styles.horizontal_item
+                isSmallScreen ?
+                "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50" : undefined 
               }
             >
               {cloneElement(navItem, {
                 className: isSmallScreen
-                  ? styles.vertical_link
-                  : styles.horizontal_link,
-                  href:'#',
-                  onClick:(e)=>{closeNav(); navItem.props.onClick(e)}
+                  ? "block py-12 dark:text-neutral-50"
+                  : "relative py-4 px-3 dark:text-neutral-50 hover:before:w-full before:w-0 before:h-full dark:before:bg-palette-blue-900 before:bg-palette-grey  before:content-[''] before:block before:absolute before:bottom-0 before:left-0 before:rounded-lg before:transition-all before:z-[-1] after:w-full after:opacity-0 hover:after:opacity-100 after:h-2 after:bg-palette-yellow after:content-[''] after:block after:absolute hover:after:-bottom-4 after:bottom-0 after:rounded-sm after:transition-all",
+                href: "#",
+                onClick: (e) => {
+                  closeNav();
+                  navItem.props.onClick(e);
+                },
               })}
             </li>
           );

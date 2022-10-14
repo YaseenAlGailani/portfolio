@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import GLogo from "../components/icons/GLogo";
@@ -7,15 +7,31 @@ import Cascade from "../components/Cascade";
 import TechOrbit from "../components/TechOrbit/TechOrbit";
 import Hr from "../components/Hr";
 import Projects from "../components/Projects/Projects";
-import { Nav, NavList } from "../components/Nav/Nav";
+import { Nav, NavList } from "../components/Nav";
 import StickyNote from "../components/StickyNote";
 import GithubIcon from "../components/icons/GithubIcon";
 import LinkedinIcon from "../components/icons/LinkedinIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
 import CodepenIcon from "../components/icons/CodepenIcon";
 import FreeCircle from "../components/FreeCircle";
+import SunIcon from "../components/icons/SunIcon";
+import MoonIcon from "../components/icons/MoonIcon";
 
 export default function Home() {
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, []);
+
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
@@ -37,7 +53,7 @@ export default function Home() {
         <meta charset="utf-8" />
         <title>gailani.dev</title>
         <meta
-          content="Hi, I'm Yaseen, a frontend web developer passionate about bringing ideas to the web."
+          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
           name="description"
         />
         <meta
@@ -48,7 +64,7 @@ export default function Home() {
         <meta content="https://gailani.dev" property="og:url" />
         <meta content="Yaseen AlGailani" property="og:title" />
         <meta
-          content="Hi, I'm Yaseen, a frontend web developer passionate about bringing ideas to the web."
+          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
           property="og:description"
         />
         <meta content="https://gailani.dev/og-image.png" property="og:image" />
@@ -57,7 +73,7 @@ export default function Home() {
         <meta content="@thegailani" name="twitter:site" />
         <meta content="Yaseen" name="twitter:title" />
         <meta
-          content="Hi, I'm Yaseen, a frontend web developer passionate about bringing ideas to the web."
+          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
           name="twitter:description"
         />
         <meta content="https://gailani.dev/og-image.png" name="twitter:image" />
@@ -94,6 +110,7 @@ export default function Home() {
                 </a>
               </NavList>
             </Nav>
+            <ThemeToggle />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto">
             <div className="relative">
@@ -120,8 +137,8 @@ export default function Home() {
             <p className="flex items-center">
               <span className="text-6xl mr-8">👋</span>
               <span className="text-2xl sm:text-4xl font-bold text-palette-blue-900 dark:text-palette-grey">
-                Hi, I&apos;m Yaseen, <br />
-                I&apos;m passionate about bringing ideas to{" "}
+                Hi, I&apos;m Yaseen, <br />I like building user interfaces and
+                bringing ideas to{" "}
                 <span className="relative inline-block bg-neutral-100 dark:bg-slate-700 py-2 px-1 after:content-[''] after:absolute after:-bottom-0 after:left-0 after:block after:bg-palette-yellow after:w-full after:h-2">
                   the web!
                 </span>
@@ -189,7 +206,7 @@ export default function Home() {
             </Cascade>
             <div className="relative mb-40 sm:mb-52">
               <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 p-4 sm:p-8">
-                <p className="rotate-2 sm:text-2xl">find me on linkedin ✌️</p>
+                <p className="rotate-2 text-2xl">find me on linkedin ✌️</p>
               </StickyNote>
               <input
                 disabled
@@ -258,5 +275,28 @@ export default function Home() {
         </footer>
       </div>
     </div>
+  );
+}
+
+function ThemeToggle() {
+
+  const [isDark, setDark] = useState(false);
+
+  const toggleTheme = (e) => {
+    const html = document.documentElement;
+    const currentIsDark = !isDark
+    setDark(currentIsDark);
+    localStorage.setItem("theme", currentIsDark ? "dark" : "light");
+
+    html.classList.contains("dark")
+      ? html.classList.remove("dark")
+      : html.classList.add("dark");
+  };
+
+  return (
+    <button onClick={toggleTheme}>
+      <span className="sr-only">Toggle theme</span>
+      {isDark ? <SunIcon /> : <MoonIcon />}
+    </button>
   );
 }

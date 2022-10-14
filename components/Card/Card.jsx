@@ -96,7 +96,7 @@ export default function Card({ imageSrc, title, children }) {
         </motion.div>
         {!isOpen && (
           <button
-            className="absolute top-0 right-0 bottom-0 left-0 z-20 w-full rounded-3xl hover:ring focus:ring ring-palette-yellow ring-offset-8 focus:outline-none transition"
+            className="absolute top-0 right-0 bottom-0 left-0 z-20 w-full rounded-3xl hover:ring focus:ring ring-palette-yellow ring-offset-8 ring-offset-neutral-50 dark:ring-offset-slate-800 focus:outline-none transition"
             onClick={(e) => {
               e.stopPropagation();
               openCard();
