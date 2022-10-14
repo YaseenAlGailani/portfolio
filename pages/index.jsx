@@ -72,7 +72,6 @@ export default function Home() {
             <Nav>
               <NavList>
                 <a
-                  to={section1Ref.current}
                   onClick={(e) => {
                     handleNavItemClick(e, section1Ref.current);
                   }}
@@ -80,15 +79,13 @@ export default function Home() {
                   Tech I build with
                 </a>
                 <a
-                  to={section2Ref.current}
                   onClick={(e) => {
                     handleNavItemClick(e, section2Ref.current);
                   }}
                 >
-                  Things I built
+                  Things I&apos;ve built
                 </a>
                 <a
-                  to={section3Ref.current}
                   onClick={(e) => {
                     handleNavItemClick(e, section3Ref.current);
                   }}
@@ -143,14 +140,23 @@ export default function Home() {
                 Tech I build with
               </h2>
             </Cascade>
-            <StickyNote classes="absolute bottom-0 lg:bottom-auto z-10">
-              <p className="-rotate-1 sm:text-[1.3rem]">
-                I should add more things, I want people to take me seriously!
-              </p>
-            </StickyNote>
             <div className="grid grid-cols-12 ">
               <TechOrbit />
             </div>
+            <StickyNote classes="absolute bottom-0 lg:top-32 z-10">
+              <p className="-rotate-1 sm:text-[1.3rem]">
+                that outer circle is empty.. wanna help me fill it?{" "}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    handleNavItemClick(e, section3Ref.current);
+                  }}
+                  className="underline inline-block"
+                >
+                  get in touch
+                </a>
+              </p>
+            </StickyNote>
           </section>
           <Hr className="sm:mb-12 md:mb-20" />
           <section
@@ -159,7 +165,7 @@ export default function Home() {
           >
             <Cascade before="##">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900 font-display mb-8">
-                Things I built
+                Things I&apos;ve built
               </h2>
             </Cascade>
             <StickyNote classes="absolute z-10 right-0 top-0 -rotate-6 bg-cyan-300 dark:bg-cyan-300">
@@ -182,11 +188,8 @@ export default function Home() {
               </h2>
             </Cascade>
             <div className="relative mb-40 sm:mb-52">
-              <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 pt-2 sm:p-4">
-                <p className="rotate-2 sm:text-[1.2rem]">
-                  I can&apos;t be bothered to build a form, please get in touch
-                  with me on linkedin ✌️
-                </p>
+              <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 p-4 sm:p-8">
+                <p className="rotate-2 sm:text-2xl">find me on linkedin ✌️</p>
               </StickyNote>
               <input
                 disabled

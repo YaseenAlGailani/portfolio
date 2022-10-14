@@ -1,3 +1,3 @@
-![Portolio](https://gailani.dev/og-image.png)
+![Portolio](https://gailani.dev/og-image-l.png)
 
-[check it out here](https://gailani.dev)
+[gailani.dev](https://gailani.dev)
