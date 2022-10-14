@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="px-3 mx-auto">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta charset="utf-8" />
@@ -51,10 +51,7 @@ export default function Home() {
           content="Hi, I'm Yaseen, a frontend web developer passionate about bringing ideas to the web."
           property="og:description"
         />
-        <meta
-          content="https://gailani.dev/og-image.png"
-          property="og:image"
-        />
+        <meta content="https://gailani.dev/og-image.png" property="og:image" />
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@thegailani" name="twitter:creator" />
         <meta content="@thegailani" name="twitter:site" />
@@ -63,10 +60,7 @@ export default function Home() {
           content="Hi, I'm Yaseen, a frontend web developer passionate about bringing ideas to the web."
           name="twitter:description"
         />
-        <meta
-          content="https://gailani.dev/og-image.png"
-          name="twitter:image"
-        />
+        <meta content="https://gailani.dev/og-image.png" name="twitter:image" />
         <meta content="Yaseen AlGailani" name="twitter:alt" />
       </Head>
       <div>
@@ -260,6 +254,6 @@ export default function Home() {
           </span>
         </footer>
       </div>
-    </>
+    </div>
   );
 }

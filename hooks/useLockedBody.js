@@ -10,11 +10,14 @@ function useLockedBody(initialLocked = false) {
     }
 
     // Save initial body style
-    const originalOverflow = document.body.style.overflow;
-    const originalPaddingRight = document.body.style.paddingRight;
+    const bodyOriginalOverflow = document.body.style.overflow;
+    const bodyOriginalPaddingRight = document.body.style.paddingRight;
 
-    // Lock body scroll
+
+
+    // Lock HTML and body scroll
     document.body.style.overflow = "hidden";
+ 
 
     // Get the scrollBar width
     const root = document.getElementById("__next"); // or root
@@ -26,10 +29,10 @@ function useLockedBody(initialLocked = false) {
     }
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow = bodyOriginalOverflow;
 
       if (scrollBarWidth) {
-        document.body.style.paddingRight = originalPaddingRight;
+        document.body.style.paddingRight = bodyOriginalPaddingRight;
       }
     };
   }, [isLocked]);

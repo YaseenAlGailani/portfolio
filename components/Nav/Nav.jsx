@@ -99,7 +99,7 @@ function NavList({ isSmallScreen, children, closeNav=()=>{} }) {
                   ? styles.vertical_link
                   : styles.horizontal_link,
                   href:'#',
-                  onClick:(e)=>{navItem.props.onClick(e);closeNav()}
+                  onClick:(e)=>{closeNav(); navItem.props.onClick(e)}
               })}
             </li>
           );

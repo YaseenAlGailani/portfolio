@@ -60,7 +60,6 @@ function useModal({
   labelledby: userLabelledby = "",
   describedby: userDescribedby = "",
   role = "alertdialog",
-  relatedNodes = [],
 } = {}) {
   const [isOpen, setIsOpen] = useLockedBody(false);
 
@@ -74,21 +73,6 @@ function useModal({
       focusFirstDescendant(modalRef.current);
     }
   });
-
-  // assigns the event listener with every component using of the hook (not good)
-  /*  useEffect(() => {
-    const handleClickOutside = (event) => {
-      console.log(event.target)
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [setIsOpen, relatedNodes]);
-  */
 
   // keep focus within modal until closed
   useEffect(() => {
