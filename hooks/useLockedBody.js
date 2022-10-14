@@ -13,12 +13,9 @@ function useLockedBody(initialLocked = false) {
     const bodyOriginalOverflow = document.body.style.overflow;
     const bodyOriginalPaddingRight = document.body.style.paddingRight;
 
-
-
     // Lock HTML and body scroll
     document.body.style.overflow = "hidden";
  
-
     // Get the scrollBar width
     const root = document.getElementById("__next"); // or root
     const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0;
