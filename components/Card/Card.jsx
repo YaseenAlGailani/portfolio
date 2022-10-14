@@ -16,10 +16,10 @@ export default function Card({ imageSrc, title, children }) {
     role: "dialog",
   });
 
-  const zIndex = useMotionValue(isOpen ? 200 : 0);
+  const zIndex = useMotionValue(isOpen ? 9 : 0);
 
   function setzIndex() {
-    zIndex.set(200);
+    zIndex.set(9);
   }
   function unsetzIndex() {
     zIndex.set(0);
@@ -31,12 +31,12 @@ export default function Card({ imageSrc, title, children }) {
 
   return (
     <li
-      className={`relative px-0 py-4 md:p-6 h-60 md:h-[460px] focus:z-50 hover:z-50 ${styles.card_width}`}
+      className={`relative px-0 py-4 md:p-6 h-60 md:h-[460px] ${styles.card_width}`}
     >
       <div
         className={`flex items-start mx-auto w-full h-full ${
           isOpen
-            ? "fixed top-0 left-0 right-0 bg-[#000000ac] z-20 overflow-scroll py-12"
+            ? "fixed top-0 left-0 right-0 bg-[#000000ac] z-30 overflow-scroll py-12"
             : "relative"
         }`}
         onClick={(e) => {
@@ -47,9 +47,10 @@ export default function Card({ imageSrc, title, children }) {
         <motion.div
           layout
           style={{ zIndex, borderRadius: 24 }}
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
           onLayoutAnimationStart={setzIndex}
           onLayoutAnimationComplete={unsetzIndex}
-          className={`relative translate-y-0 bg-neutral-50 dark:bg-slate-800 rounded-3xl overflow-x-hidden
+          className={`relative translate-y-0 bg-neutral-50 dark:bg-slate-800 rounded-3xl overflow-x-hidden z-0
           ${
             isOpen
               ? "fixed max-w-4xl mx-auto h-auto overflow-hidden"
@@ -60,7 +61,7 @@ export default function Card({ imageSrc, title, children }) {
           <motion.h3
             layout
             id={labelledby}
-            className="absolute top-4 left-4 z-50 text-lg sm:text-3xl font-display sm:leading-snug text-palette-blue-900 w-96 max-w-full pr-12"
+            className="absolute top-4 left-4 z-30 text-lg sm:text-3xl font-display sm:leading-snug text-palette-blue-900 w-96 max-w-full pr-12"
           >
             <span className="px-2 bg-palette-yellow">{title}</span>
           </motion.h3>
@@ -83,8 +84,8 @@ export default function Card({ imageSrc, title, children }) {
             <div {...getModalProps()}>
               <CloseButton onClick={closeCard} />
               <motion.div
-                animate={{opacity:1}}
-                transition={{opacity:{delay:0.2, duration:0.7}}}
+                animate={{ opacity: 1 }}
+                transition={{ opacity: { delay: 0, duration: 0.6 } }}
                 className="opacity-0 p-6 dark:text-neutral-50 w-screen max-w-4xl"
               >
                 <div>{children}</div>
@@ -94,7 +95,7 @@ export default function Card({ imageSrc, title, children }) {
         </motion.div>
         {!isOpen && (
           <button
-            className="absolute top-0 right-0 bottom-0 left-0 z-10 rounded-3xl  hover:ring focus:ring ring-palette-yellow ring-offset-8 focus:outline-none transition"
+            className="absolute top-0 right-0 bottom-0 left-0 z-20 rounded-3xl hover:ring focus:ring ring-palette-yellow ring-offset-8 focus:outline-none transition"
             onClick={(e) => {
               e.stopPropagation();
               openCard();
