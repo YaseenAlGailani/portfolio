@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { useEffect } from "react";
 
 export default function Document() {
   return (
@@ -12,7 +11,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="bg-neutral-50 dark:bg-slate-800 text-neutral-800">
+      <body className="transition-colors bg-neutral-50 dark:bg-slate-800 text-neutral-800">
         <Main />
         <NextScript />
       </body>

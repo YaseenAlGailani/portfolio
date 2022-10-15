@@ -14,11 +14,9 @@ import LinkedinIcon from "../components/icons/LinkedinIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
 import CodepenIcon from "../components/icons/CodepenIcon";
 import FreeCircle from "../components/FreeCircle";
-import SunIcon from "../components/icons/SunIcon";
-import MoonIcon from "../components/icons/MoonIcon";
+
 
 export default function Home() {
-
   useEffect(() => {
     const html = document.documentElement;
     if (
@@ -110,7 +108,6 @@ export default function Home() {
                 </a>
               </NavList>
             </Nav>
-            <ThemeToggle />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto">
             <div className="relative">
@@ -275,28 +272,5 @@ export default function Home() {
         </footer>
       </div>
     </div>
-  );
-}
-
-function ThemeToggle() {
-
-  const [isDark, setDark] = useState(false);
-
-  const toggleTheme = (e) => {
-    const html = document.documentElement;
-    const currentIsDark = !isDark
-    setDark(currentIsDark);
-    localStorage.setItem("theme", currentIsDark ? "dark" : "light");
-
-    html.classList.contains("dark")
-      ? html.classList.remove("dark")
-      : html.classList.add("dark");
-  };
-
-  return (
-    <button onClick={toggleTheme}>
-      <span className="sr-only">Toggle theme</span>
-      {isDark ? <SunIcon /> : <MoonIcon />}
-    </button>
   );
 }

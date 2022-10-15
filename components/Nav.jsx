@@ -2,6 +2,8 @@ import { useState, useEffect, Children, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Triangle from "./icons/TriangleIcon";
 import useModal from "../hooks/useModal";
+import SunIcon from "../components/icons/SunIcon";
+import MoonIcon from "../components/icons/MoonIcon";
 
 function Nav({ children }) {
   if (Children.count(children) !== 1 && children.type !== NavList) {
@@ -17,7 +19,7 @@ function Nav({ children }) {
   } = useModal({ role: "dialog" });
 
   useEffect(() => {
-    const screenWidthQuery = window.matchMedia("(max-width:	768px)");
+    const screenWidthQuery = window.matchMedia("(max-width:	1024px)");
 
     screenWidthQuery.addEventListener("change", (e) => {
       setIsSmallScreen(e.matches);
@@ -27,7 +29,12 @@ function Nav({ children }) {
   }, []);
 
   if (!isSmallScreen) {
-    return cloneElement(children, { isSmallScreen });
+    return (
+      <div className="grid grid-flow-col gap-12 items-center">
+        {cloneElement(children, { isSmallScreen })}
+        <ThemeToggle iconOnly />
+      </div>
+    );
   }
 
   return (
@@ -50,9 +57,12 @@ function Nav({ children }) {
               animate={{ translateY: "9rem", opacity: 1 }}
               exit={{ translateY: "1rem", opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 800 }}
-              className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 z-20 shadow-xl"
+              className="absolute top-0 opacity-0 z-20 shadow-xl left-0 right-0"
             >
-              {cloneElement(children, { isSmallScreen, closeNav })}
+              <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
+              <div className="flex justify-center mt-4 mx-auto py-6 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50">
+                <ThemeToggle onClick={closeNav} />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -78,7 +88,7 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
     <ul
       className={
         isSmallScreen
-          ? "absolute left-1/2 -translate-x-1/2 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+          ? "mx-auto dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
           : "grid grid-flow-col gap-12 md:text-xl font-bold text-palette-blue-900 dark:text-palette-grey -mr-3"
       }
     >
@@ -87,8 +97,8 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
           return (
             <li
               className={
-                isSmallScreen ?
-                "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50" : undefined 
+                isSmallScreen &&
+                "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50"
               }
             >
               {cloneElement(navItem, {
@@ -110,3 +120,28 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
 }
 
 export { Nav, NavList };
+
+function ThemeToggle({ iconOnly, onClick=null}) {
+  const [isDark, setDark] = useState(false);
+
+  const toggleTheme = (e) => {
+    const html = document.documentElement;
+    const currentIsDark = !isDark;
+    setDark(currentIsDark);
+    localStorage.setItem("theme", currentIsDark ? "dark" : "light");
+
+    html.classList.contains("dark")
+      ? html.classList.remove("dark")
+      : html.classList.add("dark");
+  };
+
+  return (
+    <button
+      onClick={()=>{toggleTheme(), onClick?.()}}
+      className="flex items-center justify-center border border-neutral-200 p-4 rounded-full hover hover:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
+    >
+      <span className={iconOnly ? 'sr-only' : 'mr-4'}>Toggle theme</span>
+      {isDark ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
+}

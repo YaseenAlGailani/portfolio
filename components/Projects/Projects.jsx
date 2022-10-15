@@ -19,14 +19,14 @@ export default function Projects() {
       <Card imageSrc={asicImg} title="ASIC Careers">
         <Asic />
       </Card>
+      <Card imageSrc={clemsImg} title="Clemenger Careers">
+        <Clems />
+      </Card>
       <Card
         imageSrc={djcsImg}
         title="VIC Gov Department of justice and community safety Careers"
       >
         <Djcs />
-      </Card>
-      <Card imageSrc={clemsImg} title="Clemenger Careers">
-        <Clems />
       </Card>
       <Card imageSrc={egytekImg} title="Egytek Solutions">
         <Egytek />
