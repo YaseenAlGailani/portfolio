@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -14,6 +15,17 @@ export default function Document() {
       <body className="transition-colors bg-neutral-50 dark:bg-slate-800 text-neutral-800">
         <Main />
         <NextScript />
+        <Script id="theme">
+          {`if (
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+              html.classList.add("dark");
+            } else {
+              html.classList.remove("dark");
+          }`}
+        </Script>
       </body>
     </Html>
   );

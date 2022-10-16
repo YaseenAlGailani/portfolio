@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import GLogo from "../components/icons/GLogo";
@@ -17,18 +17,6 @@ import FreeCircle from "../components/FreeCircle";
 
 
 export default function Home() {
-  useEffect(() => {
-    const html = document.documentElement;
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
-    }
-  }, []);
 
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
