@@ -97,8 +97,7 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
           return (
             <li
               className={
-                isSmallScreen &&
-                "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50"
+                isSmallScreen ? "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50" : undefined
               }
             >
               {cloneElement(navItem, {

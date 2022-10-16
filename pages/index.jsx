@@ -170,7 +170,7 @@ export default function Home() {
                 Things I&apos;ve built
               </h2>
             </Cascade>
-            <StickyNote classes="absolute z-10 right-0 top-0 -rotate-6 bg-cyan-300 dark:bg-cyan-300">
+            <StickyNote classes="absolute z-10 right-0 top-20 -rotate-6 bg-cyan-300 dark:bg-cyan-300">
               <p className="rotate-3">
                 a few of the least embarrassing things...
               </p>
