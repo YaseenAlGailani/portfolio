@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useId } from "react";
+import { useEffect, useRef, useCallback, useId } from "react";
 import useLockedBody from "./useLockedBody";
 
 const focusFirstDescendant = (element) => {
