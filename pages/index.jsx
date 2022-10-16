@@ -99,7 +99,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto">
             <div className="relative">
-              <Cascade className="mb-8" before="#">
+              <Cascade className="mb-8">
                 <h1 className="text-8xl sm:text-9xl lg:text-9xl xl:text-12xl 2xl:text-15xl font-display transition-all">
                   Hello <br aria-hidden="true" />
                   world!
@@ -137,7 +137,7 @@ export default function Home() {
             ref={section1Ref}
             className="relative pt-8 container mx-auto pb-32 sm:pb-0 mb-8 sm:mb-12 md:mb-20"
           >
-            <Cascade before="##">
+            <Cascade>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900 font-display mb-8">
                 Tech I build with
               </h2>
@@ -165,7 +165,7 @@ export default function Home() {
             ref={section2Ref}
             className="relative pt-8 container mx-auto mb-8 sm:mb-12 md:mb-20"
           >
-            <Cascade before="##">
+            <Cascade>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900 font-display mb-8">
                 Things I&apos;ve built
               </h2>
@@ -184,7 +184,7 @@ export default function Home() {
             ref={section3Ref}
             className="relative pt-8 container mx-auto mb-8 sm:mb-12 md:mb-20"
           >
-            <Cascade before="##">
+            <Cascade>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900  font-display mb-8">
                 Get in touch
               </h2>

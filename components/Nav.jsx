@@ -57,12 +57,13 @@ function Nav({ children }) {
               animate={{ translateY: "9rem", opacity: 1 }}
               exit={{ translateY: "1rem", opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 800 }}
-              className="absolute top-0 opacity-0 z-20 shadow-xl left-0 right-0"
-            >
+              className="absolute top-0 opacity-0 z-20 left-0 right-0"
+            >       
               <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
-              <div className="flex justify-center mt-4 mx-auto py-6 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50">
-                <ThemeToggle onClick={closeNav} />
-              </div>
+                <ThemeToggle
+                  onClick={closeNav}
+                  classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+                />
             </motion.div>
           )}
         </AnimatePresence>
@@ -97,7 +98,9 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
           return (
             <li
               className={
-                isSmallScreen ? "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50" : undefined
+                isSmallScreen
+                  ? "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50"
+                  : undefined
               }
             >
               {cloneElement(navItem, {
@@ -120,12 +123,12 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
 
 export { Nav, NavList };
 
-function ThemeToggle({ iconOnly, onClick=null}) {
+function ThemeToggle({ iconOnly, onClick = null, classes="" }) {
   const [isDark, setIsDark] = useState(true);
 
-  useEffect(()=>{
-    setIsDark(document.documentElement.classList.contains('dark'))
-  }, [])
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+  }, []);
 
   const toggleTheme = (e) => {
     const html = document.documentElement;
@@ -140,10 +143,14 @@ function ThemeToggle({ iconOnly, onClick=null}) {
 
   return (
     <button
-      onClick={()=>{toggleTheme(), onClick?.()}}
-      className="flex items-center justify-center border border-neutral-200 p-4 rounded-full hover hover:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
+      onClick={() => {
+        toggleTheme(), onClick?.();
+      }}
+      className={`flex items-center justify-center ${iconOnly ? "border" : ""} border-neutral-200 p-4 rounded-full hover hover:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition ${classes}`}
     >
-      <span className={iconOnly ? 'sr-only' : 'mr-4'}>{isDark ? 'Light theme' : 'Dark theme'}</span>
+      <span className={iconOnly ? "sr-only" : "mr-4"}>
+        {isDark ? "Light theme" : "Dark theme"}
+      </span>
       {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   );
