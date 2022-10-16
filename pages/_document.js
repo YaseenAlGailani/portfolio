@@ -20,8 +20,7 @@ export default function Document() {
               document.documentElement.classList.add("dark");
             } else {
               document.documentElement.classList.remove("dark");
-          }
-          console.log("Helloooooooooooo")`}
+          }`}       
       </Script>
       </Head>
       <body className="transition-colors bg-neutral-50 dark:bg-slate-800 text-neutral-800">
