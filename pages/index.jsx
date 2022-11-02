@@ -1,8 +1,6 @@
 import { useRef } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import GLogo from "../components/icons/GLogo";
-import HeroImage from "../public/hero.svg";
 import Cascade from "../components/Cascade";
 import TechOrbit from "../components/TechOrbit/TechOrbit";
 import Hr from "../components/Hr";
@@ -14,10 +12,10 @@ import LinkedinIcon from "../components/icons/LinkedinIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
 import CodepenIcon from "../components/icons/CodepenIcon";
 import FreeCircle from "../components/FreeCircle";
-
+import HeroArt from "../components/HeroArt";
+import { motion } from "framer-motion";
 
 export default function Home() {
-
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
@@ -101,20 +99,35 @@ export default function Home() {
             <div className="relative">
               <Cascade className="mb-8">
                 <h1 className="text-8xl sm:text-9xl lg:text-9xl xl:text-12xl 2xl:text-15xl font-display transition-all">
-                  Hello <br aria-hidden="true" />
-                  world!
+                  <motion.span
+                    className="block"
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0 }}
+                  >
+                    Hello
+                  </motion.span>
+                  <motion.span
+                    className="block"
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    world!
+                  </motion.span>
                 </h1>
               </Cascade>
-              <p className="font-handwriting text-neutral-500 dark:text-neutral-200 -mt-4">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="font-handwriting text-neutral-500 dark:text-neutral-200 -mt-4"
+              >
                 so creative...
-              </p>
+              </motion.p>
             </div>
             <div>
-              <Image
-                aria-hidden="true"
-                src={HeroImage}
-                alt="building an app in a code editor"
-              />
+              <HeroArt />
             </div>
           </div>
           <Hr className="mb-12" />
