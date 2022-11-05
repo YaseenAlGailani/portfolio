@@ -130,7 +130,7 @@ function ThemeToggle({ iconOnly, onClick = null, classes = "" }) {
     setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  const toggleTheme = (e) => {
+  const toggleTheme = () => {
     const html = document.documentElement;
     const currentIsDark = !isDark;
     setIsDark(currentIsDark);
