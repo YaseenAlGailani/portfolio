@@ -58,12 +58,12 @@ function Nav({ children }) {
               exit={{ translateY: "1rem", opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 800 }}
               className="absolute top-0 opacity-0 z-20 left-0 right-0"
-            >       
+            >
               <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
-                <ThemeToggle
-                  onClick={closeNav}
-                  classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
-                />
+              <ThemeToggle
+                onClick={closeNav}
+                classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -123,7 +123,7 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
 
 export { Nav, NavList };
 
-function ThemeToggle({ iconOnly, onClick = null, classes="" }) {
+function ThemeToggle({ iconOnly, onClick = null, classes = "" }) {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -144,9 +144,12 @@ function ThemeToggle({ iconOnly, onClick = null, classes="" }) {
   return (
     <button
       onClick={() => {
-        toggleTheme(), onClick?.();
+        toggleTheme();
+        onClick?.();
       }}
-      className={`flex items-center justify-center ${iconOnly ? "border" : ""} border-neutral-200 p-4 rounded-full hover hover:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition ${classes}`}
+      className={`flex items-center justify-center ${
+        iconOnly ? "border" : ""
+      } border-neutral-200 p-4 rounded-full hover hover:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition ${classes}`}
     >
       <span className={iconOnly ? "sr-only" : "mr-4"}>
         {isDark ? "Light theme" : "Dark theme"}
