@@ -65,7 +65,7 @@ export default function Home() {
       </Head>
       <div>
         <header>
-          <div className="relative flex justify-between items-center container mx-auto mb-8 py-4 sm:py-12">
+          <div className="relative flex justify-between items-center container mx-auto mb-4 lg:mb-8 py-4 lg:py-12">
             <span aria-hidden={true}>
               <GLogo />
             </span>

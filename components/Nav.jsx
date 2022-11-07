@@ -39,35 +39,29 @@ function Nav({ children }) {
 
   return (
     <nav>
+      <ToggleButton onClick={toggleNav} isOpen={isOpen} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            className="fixed top-0 left-0 right-0 bg-[rgba(0,0,0,0.8)] z-20 h-screen overflow-auto"
             onClick={closeNav}
-            className="fixed flex justify-center items-center top-0 right-0 bottom-0 left-0 p-10 bg-[rgba(0,0,0,0.8)] opacity-0 z-10"
-          ></motion.div>
-        )}
-      </AnimatePresence>
-      <ToggleButton onClick={toggleNav} isOpen={isOpen} />
-      <AnimatePresence>
-        {isOpen && (
-          <div>
-            <div {...getModalProps()}>
-              <motion.div
-                animate={{ translateY: "9rem", opacity: 1 }}
-                exit={{ translateY: "1rem", opacity: 0 }}
-                transition={{ type: "spring", damping: 30, stiffness: 800 }}
-                className="absolute top-0 opacity-0 z-20 left-0 right-0"
-              >
-                <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
-                <ThemeToggle
-                  onClick={closeNav}
-                  classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
-                />
-              </motion.div>
-            </div>
-          </div>
+          >
+            <motion.div
+              animate={{ translateY: "6rem", opacity: 1 }}
+              exit={{ translateY: "1rem", opacity: 0 }}
+              transition={{ type: "spring", damping: 30, stiffness: 800 }}
+              className="opacity-0 w-screen max-w-[80vw] mx-auto"
+              {...getModalProps()}
+            >
+              {cloneElement(children, { isSmallScreen, closeNav })}
+              <ThemeToggle
+                onClick={closeNav}
+                classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+              />
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
@@ -78,7 +72,7 @@ function ToggleButton({ onClick, isOpen }) {
   return (
     <button
       onClick={onClick}
-      className="relative flex justify-center items-center border border-neutral-200 dark:border-slate-700 bg-neutral-50 dark:bg-slate-800 p-4 rounded-full focus:outline-none z-20 focus:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
+      className="relative flex justify-center items-center border border-neutral-200 dark:border-slate-700 bg-neutral-50 dark:bg-slate-800 p-4 rounded-full focus:outline-none z-30 focus:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
     >
       <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
       <Triangle rotate={!isOpen} />
@@ -91,7 +85,7 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
     <ul
       className={
         isSmallScreen
-          ? "mx-auto dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+          ? "dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl"
           : "grid grid-flow-col gap-12 md:text-xl font-bold text-palette-blue-900 dark:text-palette-grey -mr-3"
       }
     >
