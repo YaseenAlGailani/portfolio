@@ -49,25 +49,27 @@ function Nav({ children }) {
           ></motion.div>
         )}
       </AnimatePresence>
-      <div {...getModalProps()}>
-        <ToggleButton onClick={toggleNav} isOpen={isOpen} />
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              animate={{ translateY: "9rem", opacity: 1 }}
-              exit={{ translateY: "1rem", opacity: 0 }}
-              transition={{ type: "spring", damping: 30, stiffness: 800 }}
-              className="absolute top-0 opacity-0 z-20 left-0 right-0"
-            >
-              <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
-              <ThemeToggle
-                onClick={closeNav}
-                classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      <ToggleButton onClick={toggleNav} isOpen={isOpen} />
+      <AnimatePresence>
+        {isOpen && (
+          <div>
+            <div {...getModalProps()}>
+              <motion.div
+                animate={{ translateY: "9rem", opacity: 1 }}
+                exit={{ translateY: "1rem", opacity: 0 }}
+                transition={{ type: "spring", damping: 30, stiffness: 800 }}
+                className="absolute top-0 opacity-0 z-20 left-0 right-0"
+              >
+                <div>{cloneElement(children, { isSmallScreen, closeNav })}</div>
+                <ThemeToggle
+                  onClick={closeNav}
+                  classes="mt-4 mx-auto py-8 dark:text-neutral-50 text-center bg-neutral-50 dark:bg-slate-800 rounded-2xl w-screen max-w-[80vw] z-50"
+                />
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
@@ -76,7 +78,7 @@ function ToggleButton({ onClick, isOpen }) {
   return (
     <button
       onClick={onClick}
-      className="absolute right-0 top-7 flex justify-center items-center border border-neutral-200 dark:border-slate-700 bg-neutral-50 dark:bg-slate-800 p-4 rounded-full focus:outline-none z-20 focus:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
+      className="relative flex justify-center items-center border border-neutral-200 dark:border-slate-700 bg-neutral-50 dark:bg-slate-800 p-4 rounded-full focus:outline-none z-20 focus:ring ring-palette-yellow ring-offset-4 ring-offset-neutral-50 dark:ring-offset-slate-800 transition"
     >
       <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
       <Triangle rotate={!isOpen} />
