@@ -95,7 +95,7 @@ export default function Home() {
               </NavList>
             </Nav>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto mb-8">
             <div className="relative">
               <Cascade className="mb-8">
                 <h1 className="text-8xl sm:text-9xl lg:text-9xl xl:text-12xl 2xl:text-15xl font-display transition-all">
