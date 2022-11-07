@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function HeroArt() {
   return (
     <svg
-      className="w-full"
+      className="w-full h-auto"
       xmlns="http://www.w3.org/2000/svg"
       width="652.364"
       height="575.444"
