@@ -46,7 +46,10 @@ export default function Home() {
         />
         <meta content="https://gailani.dev/og-image.png" name="image" />
         <meta content="https://gailani.dev" property="og:url" />
-        <meta content="Yaseen AlGailani" property="og:title" />
+        <meta
+          content="Yaseen AlGailani - Web Developer Portfolio"
+          property="og:title"
+        />
         <meta
           content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
           property="og:description"
@@ -55,7 +58,10 @@ export default function Home() {
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@thegailani" name="twitter:creator" />
         <meta content="@thegailani" name="twitter:site" />
-        <meta content="Yaseen" name="twitter:title" />
+        <meta
+          content="Yaseen AlGailani - Web Developer Portfolio"
+          name="twitter:title"
+        />
         <meta
           content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
           name="twitter:description"
