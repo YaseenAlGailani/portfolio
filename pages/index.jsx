@@ -34,7 +34,7 @@ export default function Home() {
     <div className="px-3 mx-auto">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <title>gailani.dev</title>
         <meta
           content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
