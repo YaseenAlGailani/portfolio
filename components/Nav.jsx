@@ -95,18 +95,17 @@ function NavList({ isSmallScreen, children, closeNav = () => {} }) {
             <li
               className={
                 isSmallScreen
-                  ? "border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50"
+                  ? "flex justify-center border-b last:border-b-0 dark:border-slate-700 dark:text-neutral-50"
                   : undefined
               }
             >
               {cloneElement(navItem, {
                 className: isSmallScreen
-                  ? "block py-12 dark:text-neutral-50"
-                  : "relative py-4 px-3 dark:text-neutral-50 hover:before:w-full before:w-0 before:h-full dark:before:bg-palette-blue-900 before:bg-palette-grey  before:content-[''] before:block before:absolute before:bottom-0 before:left-0 before:rounded-lg before:transition-all before:z-[-1] after:w-full after:opacity-0 hover:after:opacity-100 after:h-2 after:bg-palette-yellow after:content-[''] after:block after:absolute hover:after:-bottom-4 after:bottom-0 after:rounded-sm after:transition-all",
-                href: "#",
+                  ? "flex py-12 dark:text-neutral-50"
+                  : "flex relative py-4 px-3 dark:text-neutral-50 hover:before:w-full before:w-0 before:h-full dark:before:bg-palette-blue-900 before:bg-palette-grey  before:content-[''] before:block before:absolute before:bottom-0 before:left-0 before:rounded-lg before:transition-all before:z-[-1] after:left-0 after:w-full after:opacity-0 hover:after:opacity-100 after:h-2 after:bg-palette-yellow after:content-[''] after:block after:absolute hover:after:-bottom-4 after:bottom-0 after:rounded-sm after:transition-all",
                 onClick: (e) => {
                   closeNav();
-                  navItem.props.onClick(e);
+                  navItem.props.onClick && navItem.props.onClick(e);
                 },
               })}
             </li>

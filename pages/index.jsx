@@ -14,6 +14,7 @@ import CodepenIcon from "../components/icons/CodepenIcon";
 import FreeCircle from "../components/FreeCircle";
 import HeroArt from "../components/HeroArt";
 import { motion } from "framer-motion";
+import ExtLinkIcon from "../components/icons/ExtLinkIcon";
 
 export default function Home() {
   const section1Ref = useRef(null);
@@ -77,6 +78,17 @@ export default function Home() {
             </span>
             <Nav>
               <NavList>
+                <a
+                  className="flex"
+                  href="https://gailani.hashnode.dev"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Blog <span className="sr-only">(opens in a new tab)</span>
+                  <span aria-hidden="true" className="ml-2">
+                    <ExtLinkIcon />
+                  </span>
+                </a>
                 <a
                   onClick={(e) => {
                     handleNavItemClick(e, section1Ref.current);
