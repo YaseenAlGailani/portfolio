@@ -80,7 +80,7 @@ export default function Home() {
               <NavList>
                 <a
                   className="flex"
-                  href="https://gailani.hashnode.dev"
+                  href="https://blog.gailani.dev"
                   target="_blank"
                   rel="noreferrer"
                 >
