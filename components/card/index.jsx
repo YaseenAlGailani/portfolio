@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import styles from "./Card.module.css";
+import { useEffect } from "react";
+import styles from "./index.module.css";
 import Image from "next/image";
 import CloseIcon from "../icons/CloseIcon";
 import { motion, useMotionValue } from "framer-motion";

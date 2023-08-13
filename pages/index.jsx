@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Head from "next/head";
 import GLogo from "../components/icons/GLogo";
 import Cascade from "../components/Cascade";
-import TechOrbit from "../components/techOrbit/TechOrbit";
+import TechOrbit from "../components/techOrbit";
 import Hr from "../components/Hr";
 import Projects from "../components/projects/Projects";
 import { Nav, NavList } from "../components/nav";

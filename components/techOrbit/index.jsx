@@ -1,6 +1,6 @@
 import anime from 'animejs';
 import { useEffect, useRef } from 'react'
-import * as styles from './TechOrbit.module.css'
+import * as styles from './index.module.css'
 
 export default function TechOrbit(){
 
