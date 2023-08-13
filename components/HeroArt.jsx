@@ -340,8 +340,8 @@ export default function HeroArt() {
           </g>
         </g>
         <motion.g
-          initial={{ opacity: 0}}
-          animate={{ opacity: 1}}
+          initial={{ opacity: 0, y: 700 }}
+          animate={{ opacity: 1, x: 0, y: 515 }}
           transition={{ delay: 0 }}
           transform="translate(5.528 516.5)"
         >
@@ -461,7 +461,7 @@ export default function HeroArt() {
         <motion.g
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.5 }}
           transform="translate(1.766 516.624)"
         >
           <path
@@ -516,9 +516,9 @@ export default function HeroArt() {
           />
         </motion.g>
         <motion.g
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          initial={{ opacity: 0, x: -20, y: 560 }}
+          animate={{ opacity: 1, x: 10, y: 510 }}
+          transition={{ delay: 0.7 }}
           transform="translate(9.045 518.151)"
         >
           <path
@@ -628,9 +628,9 @@ export default function HeroArt() {
           />
         </motion.g>
         <motion.g
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          initial={{ opacity: 0, x: -30, y: 560 }}
+          animate={{ opacity: 1, x: -20, y: 540 }}
+          transition={{ delay: 0.9 }}
           transform="translate(-21 537.747)"
         >
           <path transform="translate(2541.699 -68.821)" fill="#f06161" />

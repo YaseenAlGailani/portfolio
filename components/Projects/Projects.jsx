@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import Card from "../card/Card";
 import wanderImg from "../../public/wander.png";
 import asicImg from "../../public/asic.png";
 import clemsImg from "../../public/clems.png";

@@ -2,10 +2,10 @@ import { useRef } from "react";
 import Head from "next/head";
 import GLogo from "../components/icons/GLogo";
 import Cascade from "../components/Cascade";
-import TechOrbit from "../components/TechOrbit/TechOrbit";
+import TechOrbit from "../components/techOrbit/TechOrbit";
 import Hr from "../components/Hr";
-import Projects from "../components/Projects/Projects";
-import { Nav, NavList } from "../components/Nav";
+import Projects from "../components/projects/Projects";
+import { Nav, NavList } from "../components/nav";
 import StickyNote from "../components/StickyNote";
 import GithubIcon from "../components/icons/GithubIcon";
 import LinkedinIcon from "../components/icons/LinkedinIcon";
@@ -38,7 +38,7 @@ export default function Home() {
         <meta charSet="utf-8" />
         <title>gailani.dev</title>
         <meta
-          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
+          content="Hi, I'm Yaseen 👋, I like building engaging, accessible, and visually stunning user interfaces."
           name="description"
         />
         <meta
@@ -52,7 +52,7 @@ export default function Home() {
           property="og:title"
         />
         <meta
-          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
+          content="Hi, I'm Yaseen 👋, I like building engaging, accessible, and visually stunning user interfaces."
           property="og:description"
         />
         <meta content="https://gailani.dev/og-image.png" property="og:image" />
@@ -64,7 +64,7 @@ export default function Home() {
           name="twitter:title"
         />
         <meta
-          content="Hi, I'm Yaseen, I like building user interfaces and bringing ideas to the web."
+          content="Hi, I'm Yaseen 👋, I like building engaging, accessible, and visually stunning user interfaces."
           name="twitter:description"
         />
         <meta content="https://gailani.dev/og-image.png" name="twitter:image" />
@@ -73,45 +73,49 @@ export default function Home() {
       <div>
         <header>
           <div className="relative flex justify-between items-center container mx-auto mb-4 lg:mb-8 py-4 lg:py-12">
-            <span aria-hidden={true}>
-              <GLogo />
-            </span>
-            <Nav>
-              <NavList>
-                <a
-                  className="flex"
-                  href="https://blog.gailani.dev"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Blog <span className="sr-only">(opens in a new tab)</span>
-                  <span aria-hidden="true" className="ml-2">
-                    <ExtLinkIcon />
-                  </span>
-                </a>
-                <a
-                  onClick={(e) => {
-                    handleNavItemClick(e, section1Ref.current);
-                  }}
-                >
-                  Tech I build with
-                </a>
-                <a
-                  onClick={(e) => {
-                    handleNavItemClick(e, section2Ref.current);
-                  }}
-                >
-                  Things I&apos;ve built
-                </a>
-                <a
-                  onClick={(e) => {
-                    handleNavItemClick(e, section3Ref.current);
-                  }}
-                >
-                  Get in touch
-                </a>
-              </NavList>
-            </Nav>
+            <GLogo />
+            <motion.div
+              className="block"
+              initial={{ y: -50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+            >
+              <Nav>
+                <NavList>
+                  <a
+                    className="flex"
+                    href="https://blog.gailani.dev"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Blog <span className="sr-only">(opens in a new tab)</span>
+                    <span aria-hidden="true" className="ml-2">
+                      <ExtLinkIcon />
+                    </span>
+                  </a>
+                  <a
+                    onClick={(e) => {
+                      handleNavItemClick(e, section1Ref.current);
+                    }}
+                  >
+                    Tech I build with
+                  </a>
+                  <a
+                    onClick={(e) => {
+                      handleNavItemClick(e, section2Ref.current);
+                    }}
+                  >
+                    Things I&apos;ve built
+                  </a>
+                  <a
+                    onClick={(e) => {
+                      handleNavItemClick(e, section3Ref.current);
+                    }}
+                  >
+                    Get in touch
+                  </a>
+                </NavList>
+              </Nav>
+            </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center container mx-auto mb-8">
             <div className="relative">
@@ -135,14 +139,6 @@ export default function Home() {
                   </motion.span>
                 </h1>
               </Cascade>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="font-handwriting text-neutral-500 dark:text-neutral-200 -mt-4"
-              >
-                so creative...
-              </motion.p>
             </div>
             <div>
               <HeroArt />
@@ -152,12 +148,9 @@ export default function Home() {
           <div className="container mx-auto mb-12">
             <p className="flex items-center">
               <span className="text-6xl mr-8">👋</span>
-              <span className="text-2xl sm:text-4xl font-bold text-palette-blue-900 dark:text-palette-grey">
-                Hi, I&apos;m Yaseen, <br />I like building user interfaces and
-                bringing ideas to{" "}
-                <span className="relative inline-block bg-neutral-100 dark:bg-slate-700 py-2 px-1 after:content-[''] after:absolute after:-bottom-0 after:left-0 after:block after:bg-palette-yellow after:w-full after:h-2">
-                  the web!
-                </span>
+              <span className="text-2xl sm:text-4xl text-palette-blue-900 dark:text-palette-grey sm:leading-[3rem]">
+                Hi, I&apos;m Yaseen, I like building engaging, accessible, and
+                visually stunning user interfaces.
               </span>
             </p>
           </div>
@@ -166,7 +159,7 @@ export default function Home() {
         <main>
           <section
             ref={section1Ref}
-            className="relative pt-8 container mx-auto pb-32 sm:pb-0 mb-8 sm:mb-12 md:mb-20"
+            className="relative pt-8 container mx-auto mb-12 sm:pb-0 sm:mb-12 md:mb-20"
           >
             <Cascade>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl text-palette-blue-900 font-display mb-8">
@@ -176,20 +169,6 @@ export default function Home() {
             <div className="grid grid-cols-12 ">
               <TechOrbit />
             </div>
-            <StickyNote classes="absolute bottom-0 lg:top-32 z-10">
-              <p className="-rotate-1 sm:text-[1.3rem]">
-                that outer circle is empty.. wanna help me fill it?{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    handleNavItemClick(e, section3Ref.current);
-                  }}
-                  className="underline inline-block"
-                >
-                  get in touch
-                </a>
-              </p>
-            </StickyNote>
           </section>
           <Hr className="sm:mb-12 md:mb-20" />
           <section
@@ -201,11 +180,6 @@ export default function Home() {
                 Things I&apos;ve built
               </h2>
             </Cascade>
-            <StickyNote classes="absolute z-10 right-0 -top-20 -rotate-6 bg-cyan-300 dark:bg-cyan-300">
-              <p className="rotate-3">
-                a few of the least embarrassing things...
-              </p>
-            </StickyNote>
             <div>
               <Projects />
             </div>
@@ -221,8 +195,10 @@ export default function Home() {
               </h2>
             </Cascade>
             <div className="relative mb-40 sm:mb-52">
-              <StickyNote classes="absolute top-0 left-32 lg:bottom-auto z-10 -rotate-6 p-4 sm:p-8">
-                <p className="rotate-2 text-2xl">find me on linkedin ✌️</p>
+              <StickyNote classes="absolute -top-10 left-32 lg:bottom-auto z-10 -rotate-6 p-4 sm:p-8">
+                <p className="rotate-2 text-2xl">
+                  please find me on linkedin ✌️
+                </p>
               </StickyNote>
               <input
                 disabled
