@@ -208,53 +208,27 @@ export default function Home() {
                 placeholder="Enter you email"
               />
             </div>
-            <div className="flex justify-between mx-auto sm:mx-0 items-center sm:max-w-lg">
-              <div>
-                <a
-                  className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
-                  href="https://github.com/YaseenAlGailani"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">Check my GitHub page</span>
-                  <GithubIcon />
-                </a>
-              </div>
+            <div className="grid grid-flow-col auto-cols-max gap-12 justify-center sm:justify-start">
+              <a
+                className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
+                href="https://github.com/YaseenAlGailani"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="sr-only">Check my GitHub page</span>
+                <GithubIcon />
+              </a>
               <FreeCircle>
-                <div>
-                  <a
-                    className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
-                    href="https://www.linkedin.com/in/yaseenalgailani"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="sr-only">Check my Linked-in profile</span>
-                    <LinkedinIcon />
-                  </a>
-                </div>
+                <a
+                  className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
+                  href="https://www.linkedin.com/in/yaseenalgailani"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="sr-only">Check my Linked-in profile</span>
+                  <LinkedinIcon />
+                </a>
               </FreeCircle>
-              <div>
-                <a
-                  className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
-                  href="https://twitter.com/TheGailani"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">Check my twitter page</span>
-                  <TwitterIcon />
-                </a>
-              </div>
-              <div>
-                <a
-                  className="relative hover:after:opacity-100 hover:after:-bottom-7 after:opacity-0 after:content-[''] after:w-full after:h-2 after:block after:bg-palette-yellow after:rounded-sm after:absolute after:bottom-0 rounded-full inline-block after:transition-all"
-                  href="https://codepen.io/YaseenAlGailani"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">Check my Code pen page</span>
-                  <CodepenIcon />
-                </a>
-              </div>
             </div>
           </section>
         </main>
