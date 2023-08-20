@@ -82,17 +82,6 @@ export default function Home() {
               <Nav>
                 <NavList>
                   <a
-                    className="flex"
-                    href="https://blog.gailani.dev"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Blog <span className="sr-only">(opens in a new tab)</span>
-                    <span aria-hidden="true" className="ml-2">
-                      <ExtLinkIcon />
-                    </span>
-                  </a>
-                  <a
                     onClick={(e) => {
                       handleNavItemClick(e, section1Ref.current);
                     }}
@@ -112,6 +101,17 @@ export default function Home() {
                     }}
                   >
                     Get in touch
+                  </a>
+                  <a
+                    className="flex"
+                    href="https://blog.gailani.dev"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Blog <span className="sr-only">(opens in a new tab)</span>
+                    <span aria-hidden="true" className="ml-2">
+                      <ExtLinkIcon />
+                    </span>
                   </a>
                 </NavList>
               </Nav>
